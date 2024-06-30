@@ -1,14 +1,15 @@
-import { StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native"
 
 type Props = {
-  imageURL: string;
-  title: string;
-  author: string;
-};
+  imageURL: string
+  title: string
+  author: string
+  onPress: () => void
+}
 
 export const ListItem = (props: Props) => {
   return (
-    <View style={styles.itemContainer}>
+    <TouchableOpacity style={styles.itemContainer} onPress={props.onPress}>
       <View style={styles.leftContainer}>
         <Image
           style={{ width: 100, height: 100 }}
@@ -21,9 +22,9 @@ export const ListItem = (props: Props) => {
         </Text>
         <Text style={styles.subText}>{props.author}</Text>
       </View>
-    </View>
-  );
-};
+    </TouchableOpacity>
+  )
+}
 
 const styles = StyleSheet.create({
   itemContainer: {
@@ -48,4 +49,4 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "gray",
   },
-});
+})

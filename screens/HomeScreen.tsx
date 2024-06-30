@@ -1,11 +1,16 @@
 import { FlatList, SafeAreaView, StyleSheet } from "react-native"
+import { NavigationProp } from "@react-navigation/native"
 import { ListItem } from "../components/ListItem"
 import { useEffect, useState } from "react"
 import { Article, NewsResponse } from "../types/types"
 import axios from "axios"
 import { NEWS_API_KEY } from "../env"
 
-export function HomeScreen() {
+export function HomeScreen({
+  navigation,
+}: {
+  navigation: NavigationProp<any>
+}) {
   const [articles, setArticles] = useState<Article[]>([])
 
   const fetchArticles = async () => {
@@ -25,6 +30,10 @@ export function HomeScreen() {
     fetchArticles()
   }, [])
 
+  const onPressAeticle = () => {
+    navigation.navigate("Article")
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
@@ -34,6 +43,7 @@ export function HomeScreen() {
             imageURL={item.urlToImage}
             title={item.title}
             author={item.author}
+            onPress={onPressAeticle}
           />
         )}
         keyExtractor={(item, index) => index.toString()}

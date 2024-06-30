@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native"
 import { HomeScreen } from "./screens/HomeScreen"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import { ArticleScreen } from "./screens/ArticleScreen"
 
 export default function App() {
   const Stack = createNativeStackNavigator()
@@ -12,6 +13,7 @@ export default function App() {
           component={HomeScreen}
           options={{ headerShown: false }}
         />
+        <Stack.Screen name="Article" component={ArticleScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
