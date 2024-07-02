@@ -1,7 +1,8 @@
 import React from "react"
-import { Text, SafeAreaView } from "react-native"
+import { Text, SafeAreaView, StyleSheet } from "react-native"
 import { RouteProp } from "@react-navigation/native"
 import { Article } from "../types/types"
+import WebView from "react-native-webview"
 export type ArticleStackParamList = {
   Home: undefined
   Article: { article: Article }
@@ -13,10 +14,15 @@ export function ArticleScreen({ route }: { route: ProfileScreenRouteProp }) {
   const { article } = route.params
 
   return (
-    <SafeAreaView>
-      <Text>{article.title}</Text>
-      <Text>{article.author}</Text>
-      <Text>{article.url}</Text>
+    <SafeAreaView style={styles.container}>
+      <WebView source={{ uri: article.url }} />
     </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+})
