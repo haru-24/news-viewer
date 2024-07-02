@@ -30,8 +30,8 @@ export function HomeScreen({
     fetchArticles()
   }, [])
 
-  const onPressAeticle = () => {
-    navigation.navigate("Article")
+  const onPressAeticle = (article: Article) => {
+    navigation.navigate("Article", { article: article })
   }
 
   return (
@@ -43,7 +43,7 @@ export function HomeScreen({
             imageURL={item.urlToImage}
             title={item.title}
             author={item.author}
-            onPress={onPressAeticle}
+            onPress={() => onPressAeticle(item)}
           />
         )}
         keyExtractor={(item, index) => index.toString()}
