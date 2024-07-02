@@ -1,1 +1,2 @@
-# react-native-news-app
+# News Viewer
+
